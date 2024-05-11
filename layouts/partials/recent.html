@@ -1,0 +1,21 @@
+{{ $recentPosts := where .Site.Pages.ByDate.Reverse "Type" "posts" | first 3 }}
+{{ if $recentPosts }}
+  <h3>Recent Posts:</h3>
+  <ul class="blog-posts">
+    {{ range $recentPosts }}
+      {{ if eq .Kind "page" }}
+        <li>
+          <span>
+            <i>
+              <time datetime="{{ .Date.Format "2006-01-02" }}" pubdate>
+                {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
+              </time>
+            </i>
+          </span>
+          &nbsp;
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+{{ end }}

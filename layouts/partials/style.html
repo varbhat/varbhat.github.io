@@ -1,0 +1,310 @@
+<style>
+  :root {
+    --body-bg-col: #b5bfe2;
+    --body-col: #303446;
+    --h-col: #181926;
+    --a-col: #1e66f5;
+    --navlink-bg-col: #c6d0f5;
+    --code-bg-col: #c6d0f5;
+    --blockquote-border-left-col: #8839ef;
+    --blockquote-col: #45475a;
+    --helptext-col: #838ba7;
+    --errorlist-col: #df8e1d;
+    --blog-post-visited-col: #8839ef;
+    --text-input-bg-col: unset;
+    --text-input-col: unset;
+    --abbr-col: #dd7878;
+    --content-h-col: #1e1e2e;
+
+    --tellblock-info-bg-col: #7287fd;
+    --tellblock-warning-bg-col: #e64553;
+    --tellblock-important-bg-col: #df8e1d;
+    --tellblock-note-col: #179299;
+    --tellblock-tip-bg-col: #40a02b;
+    --tellblock-col: #f2f2f2;
+    --tellblock-bg-col: #7287fd;
+    --tellblock-title-col: #f2f2f2;
+
+    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Sans", "Noto Color Emoji";
+    --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times,
+      "Noto Serif", serif;
+    --font-mono: ui-monospace, Hack, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --body-bg-col: #11111b;
+      --body-col: #cdd6f4;
+      --h-col: #eff1f5;
+      --a-col: #89dceb;
+      --navlink-bg-col: #232634;
+      --code-bg-col: #45475a;
+      --blog-post-visited-col: #b4befe;
+      --text-input-bg-col: #252525;
+      --text-input-col: #cdd6f4;
+      --blockquote-col: #f2f2f2;
+      --content-h-col: #eff1f5;
+      --blockquote-border-left-col: #ca9ee6;
+    }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    margin: auto;
+    padding: 1.25rem;
+    max-width: 720px;
+    text-align: left;
+    background-color: var(--body-bg-col);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    color: var(--body-col);
+    line-height: 1.6;
+  }
+
+  abbr {
+    font-style: italic;
+    color: var(--abbr-col);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: var(--h-col);
+  }
+
+  a {
+    color: var(--a-col);
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  .navlink,
+  .taglink,
+  .btnlink {
+    padding: 0.4rem;
+    border-radius: 0.2rem;
+    text-decoration: none;
+    margin: 0.1rem;
+    background-color: var(--navlink-bg-col);
+  }
+
+  nav a {
+    margin-right: 0.6rem;
+    display: inline-block;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 1rem;
+    background-color: var(--text-input-bg-col);
+    color: var(--text-input-col);
+  }
+
+  input {
+    font-size: 1rem;
+    background-color: var(--text-input-bg-col);
+    color: var(--text-input-col);
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  content {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: var(--content-h-col);
+    }
+  }
+
+  table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    border: none;
+  }
+
+  th,
+  td {
+    border: 1px solid;
+  }
+
+  table,
+  th,
+  td {
+    border-collapse: collapse;
+    padding: 0.5rem;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code,
+  kbd {
+    padding: 0.2rem 0.3rem;
+    background-color: var(--code-bg-col);
+    font-family: var(--font-mono);
+  }
+
+  pre code {
+    display: block;
+    padding: 1.25rem;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 0.5rem solid var(--blockquote-border-left-col);
+    border-top: 0.2rem solid var(--blockquote-border-left-col);
+    border-right: 0.2rem solid var(--blockquote-border-left-col);
+    border-bottom: 0.2rem solid var(--blockquote-border-left-col);
+    color: var(--blockquote-col);
+    font-style: italic;
+    padding: 0.7rem 0.2rem 0.3rem 0.7rem;
+    line-height: 1.4rem;
+    margin: 1rem 0.1rem 1rem 0.5rem;
+    border-radius: 0.2rem;
+  }
+
+  figure {
+    margin: 1rem 0.1rem;
+  }
+
+  figcaption {
+    text-align: center;
+    color: var(--content-h-col);
+  }
+
+  video {
+    height: auto !important;
+    width: 100% !important;
+    margin: 0 auto;
+    display: block;
+  }
+
+  audio {
+    margin: 0 auto;
+    display: block;
+  }
+
+  footer {
+    margin: 5rem 0 0 0;
+  }
+
+  .helptext {
+    color: var(--helptext-col);
+    font-size: small;
+  }
+
+  .errorlist {
+    color: var(--errorlist-col);
+    font-size: small;
+  }
+
+  /* blog posts */
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 8.1rem;
+  }
+
+  ul.blog-posts li a:visited {
+    color: var(--blog-post-visited-col);
+  }
+
+  /* Tell Block Styles */
+  .tellblock {
+    padding: 1.6rem;
+    padding-top: 1.4rem;
+    line-height: 1.4rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0.25rem;
+    color: var(--tellblock-col);
+  }
+
+  .tellblock.note {
+    border-left: 0.5rem solid var(--tellblock-note-col);
+    border-top: 0.2rem solid var(--tellblock-note-col);
+    border-right: 0.2rem solid var(--tellblock-note-col);
+    border-bottom: 0.2rem solid var(--tellblock-note-col);
+    color: var(--blockquote-col);
+    padding: 1rem;
+    line-height: 1.4rem;
+    margin: 0.1rem 0.1rem 1rem 0.1rem;
+    border-radius: 0.2rem;
+  }
+
+  .tellblock.note hr {
+    color: var(--tellblock-note-col);
+  }
+
+  .tellblock.note .icon-box {
+    display: none;
+  }
+
+  .tellblock.warning {
+    background-color: var(--tellblock-warning-bg-col);
+  }
+
+  .tellblock.info {
+    background-color: var(--tellblock-info-bg-col);
+  }
+
+  .tellblock.important {
+    background-color: var(--tellblock-important-bg-col);
+  }
+
+  .tellblock.tip {
+    background-color: var(--tellblock-tip-bg-col);
+  }
+  .tellblock p {
+    margin-bottom: 0.6rem;
+  }
+  .tellblock p:first-of-type {
+    display: inline;
+  }
+  .tellblock p:nth-of-type(2) {
+    margin-top: 0.6rem;
+  }
+  .tellblock p:last-child {
+    margin-bottom: 0;
+  }
+</style>

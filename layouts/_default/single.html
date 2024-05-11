@@ -1,0 +1,65 @@
+{{ define "main" }}
+  {{ if eq .Type "posts" }}
+    {{ if not .Params.menu }}
+      <h1>{{ .Title }}</h1>
+      <p>
+        <i>
+          <time datetime="{{ .Date.Format "2006-01-02" }}" pubdate>
+            {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
+          </time>
+        </i>
+        &nbsp;-&nbsp;
+        <a href="{{ .Permalink }}">Permalink</a>
+        &nbsp;
+        {{ if .Params.Author }}-&nbsp;<i>{{ .Params.Author }}</i>{{ end }}
+      </p>
+    {{ end }}
+  {{ end }}
+  <content> {{ .Content }} </content>
+
+  {{ $pageTags:= (.GetTerms "tags") }}
+  {{ if $pageTags }}
+    <hr />
+    <small>
+      Tags:&nbsp;<br />
+      <div style="margin: 0.3rem 0; display: inline-flex; flex-wrap: wrap">
+        {{ range $pageTags }}
+          <a
+            class="taglink"
+            href="{{ .Permalink }}"
+            style="padding: 0.1rem; font-size: 0.8rem"
+            >#{{ .LinkTitle }}</a
+          >&nbsp;
+        {{ end }}
+      </div>
+    </small>
+  {{ end }}
+
+  {{ if or (eq .Type "blog") (eq  .Type "posts") }}
+    {{ if not .Params.menu }}
+      {{ if or (.NextInSection) (.PrevInSection) }}
+        <hr />
+        <small>Read More: &nbsp</small><br />
+        <div
+          style="display:flex; justify-content: space-between ;gap: 3rem;margin: 0.7rem 0;"
+        >
+          {{ with .PrevInSection }}
+            <a href="{{ .RelPermalink }}" class="navlink"
+              >&larr; {{ .LinkTitle | truncate 50 "..." }}</a
+            >
+          {{ end }}
+
+          {{ with .NextInSection }}
+            <a href="{{ .RelPermalink }}" class="navlink"
+              >{{ .LinkTitle | truncate 50 "..." }} &rarr;</a
+            >
+          {{ end }}
+
+        </div>
+      {{ end }}
+
+    {{ end }}
+
+  {{ end }}
+
+{{ end }}

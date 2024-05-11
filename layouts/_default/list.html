@@ -1,0 +1,67 @@
+{{ define "main" }}
+  <content>
+    {{ if .Data.Singular }}
+      <h3 style="margin-bottom:0">Filtering for "{{ .Title }}"</h3>
+      <small>
+        <a href="{{ "posts" | relURL }}">&cross; Remove filter</a>
+      </small>
+    {{ end }}
+    <ul class="blog-posts">
+      {{ range .Pages }}
+        <li>
+          <span>
+            <i>
+              <time datetime="{{ .Date.Format "2006-01-02" }}" pubdate>
+                {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
+              </time>
+            </i>
+          </span>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </li>
+      {{ else }}
+        <li>No posts yet</li>
+      {{ end }}
+    </ul>
+
+    {{ if .Data.Singular }}
+    {{ else }}
+      {{ $siteTags := .Site.Taxonomies.tags }}
+      {{ if $siteTags }}
+        <small>
+          Tags:&nbsp;<br />
+          <div style="margin: 0.3rem 0; display: inline-flex; flex-wrap: wrap">
+            {{ range $siteTags }}
+              <a
+                class="taglink"
+                href="{{ .Page.Permalink }}"
+                style="padding: 0.1rem; font-size: 0.8rem"
+                >#{{ .Page.Title }}</a
+              >&nbsp;
+            {{ end }}
+          </div>
+        </small>
+      {{ end }}
+      <div style="margin: 2rem 0rem 1rem 0rem">
+        <small>
+          Subscribe to:&nbsp;<br />
+          <a href="{{ "index.xml" | relURL }}" class="btnlink">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="0.7rem"
+              height="0.7rem"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                d="M22 21C22 10.507 13.493 2 3 2m14 19c0-7.732-6.268-14-14-14m9 14a9 9 0 0 0-9-9m1 11a3 3 0 1 0 0-6a3 3 0 0 0 0 6Z"
+              />
+            </svg>
+            RSS Feeds
+          </a>
+        </small>
+      </div>
+    {{ end }}
+  </content>
+{{ end }}
